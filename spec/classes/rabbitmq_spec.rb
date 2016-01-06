@@ -658,6 +658,16 @@ LimitNOFILE=1234
                             '    {port, 389},', '    {foo, bar},', '    {log, true}'])
         end
       end
+      
+      describe 'configuring auth_backends' do
+        let :params do
+          { :auth_backends   => '[{baz, foo}, bar]' }
+        end
+        it 'should contain auth_backends' do
+          verify_contents(catalogue, 'rabbitmq.config',
+                          ['    {auth_backends, [{baz, foo}, bar]},'])
+        end
+      end
 
       describe 'default_user and default_pass set' do
         let(:params) {{ :default_user => 'foo', :default_pass => 'bar' }}
