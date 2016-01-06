@@ -65,7 +65,7 @@ class rabbitmq(
   $environment_variables      = $rabbitmq::params::environment_variables,
   $config_variables           = $rabbitmq::params::config_variables,
   $config_kernel_variables    = $rabbitmq::params::config_kernel_variables,
-  $auth_backends              = $rabbitmq::params::auth_backends
+  $auth_backends              = $rabbitmq::params::auth_backends,
   $key_content                = undef,
 ) inherits rabbitmq::params {
 
