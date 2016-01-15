@@ -5,11 +5,10 @@
   {ssl, [{versions, [<%= @ssl_versions.sort.map { |v| "'#{v}'" }.join(', ') %>]}]},
 <%- end -%>
   {rabbit, [
-<% if @ldap_auth and (@auth_backends == 'UNSET') -%>
+<% if @auth_backends -%>
+    {auth_backends, [<%= @auth_backends.map { |v| "#{v}" }.join(', ') %>]},
+<% elsif @ldap_auth -%>
     {auth_backends, [rabbit_auth_backend_internal, rabbit_auth_backend_ldap]},
-<% end -%>
-<% if @auth_backends != 'UNSET' -%>
-    {auth_backends, <%= @auth_backends %>},
 <% end -%>
 <% if @config_cluster -%>
     {cluster_nodes, {[<%= @cluster_nodes.map { |n| "\'rabbit@#{n}\'" }.join(', ') %>], <%= @cluster_node_type %>}},

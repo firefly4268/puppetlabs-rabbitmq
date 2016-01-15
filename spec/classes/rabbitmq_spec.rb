@@ -661,7 +661,18 @@ LimitNOFILE=1234
       
       describe 'configuring auth_backends' do
         let :params do
-          { :auth_backends   => '[{baz, foo}, bar]' }
+          { :auth_backends   => ['{baz, foo}', 'bar'] }
+        end
+        it 'should contain auth_backends' do
+          verify_contents(catalogue, 'rabbitmq.config',
+                          ['    {auth_backends, [{baz, foo}, bar]},'])
+        end
+      end
+
+      describe 'auth_backends overrides ldap_auth' do
+        let :params do
+          { :auth_backends   => ['{baz, foo}', 'bar'],
+            :ldap_auth => true, }
         end
         it 'should contain auth_backends' do
           verify_contents(catalogue, 'rabbitmq.config',

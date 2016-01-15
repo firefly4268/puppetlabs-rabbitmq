@@ -139,7 +139,11 @@ class rabbitmq(
   validate_hash($environment_variables)
   validate_hash($config_variables)
   validate_hash($config_kernel_variables)
-  validate_string($auth_backends)
+  
+  if $auth_backends {
+    validate_array($auth_backends)
+  }
+
   if $ssl_only and ! $ssl {
     fail('$ssl_only => true requires that $ssl => true')
   }
