@@ -679,8 +679,6 @@ LimitNOFILE=1234
                           ['    {auth_backends, [{baz, foo}, bar]},'])
         end
       end
-<<<<<<< HEAD
-=======
 
       describe 'configuring shovel plugin' do
         let :params do
@@ -733,7 +731,6 @@ LimitNOFILE=1234
           end
         end
       end
->>>>>>> master
 
       describe 'default_user and default_pass set' do
         let(:params) {{ :default_user => 'foo', :default_pass => 'bar' }}
