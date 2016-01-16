@@ -80,6 +80,8 @@ class rabbitmq::params {
   $config_cluster             = false
   $config_path                = '/etc/rabbitmq/rabbitmq.config'
   $config_stomp               = false
+  $config_shovel              = false
+  $config_shovel_statics      = {}
   $default_user               = 'guest'
   $default_pass               = 'guest'
   $delete_guest_user          = false
@@ -119,6 +121,6 @@ class rabbitmq::params {
   $environment_variables      = {}
   $config_variables           = {}
   $config_kernel_variables    = {}
-  $auth_backends              = undef
+  $auth_backends              = undef 
   $file_limit                 = '16384'
 }
